@@ -34,7 +34,7 @@ brightness() {
     echo -e "$backlight"
   }
 
-  printf "^c#BF616A^   "
+  printf "^c#BF616A^  "
   printf "^c#BF616A^%.0f\n" $(backlight)
 }
 

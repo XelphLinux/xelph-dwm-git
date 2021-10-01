@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+TEXTEDIT="alacritty -e $EDITOR"
+declare -a options=(
+"Alacritty - $HOME/.config/alacritty/alacritty.yml"
+"AutoStart Script - $HOME/.config/bspwm/autostart.sh"
+"Bspwm - $HOME/.config/bspwm/bspwmrc"
+"Bspwm scripts - $HOME/.config/bspwm/scripts/"
+"Config selector - $HOME/.config/bspwm/scripts/configselector"
+"NeoVim Config - $HOME/.config/nvim/init.vim"
+"NeoVim Snippets - $HOME/.config/nvim/UltiSnips"
+"Picom config - $HOME/.config/bspwm/picom.conf"
+"Polybar config - $HOME/.config/bspwm/polybar/config"
+"Sxhkd keybinds - $HOME/.config/bspwm/sxhkd/sxhkdrc"
+"Xinitrc - $HOME/.xinitrc"
+"Zsh aliases - $HOME/.zshrc-personal"
+"Zshrc - $HOME/.zshrc"
+)
+
+choice=$(printf '%s\n' "${options[@]}"| dmenu -i -h 30 -p 'Edit config:')
+if [[ "$choice" == "quit" ]]; then
+	echo "Program terminated." && exit 1
+elif [ "$choice" ]; then
+	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+	$TEXTEDIT $cfg
+else 
+	echo "Program terminated." && exit 1
+fi

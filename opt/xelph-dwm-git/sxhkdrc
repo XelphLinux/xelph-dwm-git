@@ -1,6 +1,6 @@
 # Opens the NeoVim text editor
 super + e
-    alacritty -e nvim
+    alacritty -e $EDITOR
 
 # Take a screenshot of your entire screen
 super + Print 

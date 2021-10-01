@@ -16,7 +16,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
 static const int showtab            = showtab_auto;
-static const int toptab             = False;	/*No tab on monocle mode*/
+static const int toptab             = True;	/*tab is at the top of the screen in monoble mode*/
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
 static const int vertpadbar         = 8;
@@ -87,18 +87,6 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     { "[]=",      tile },    /* first entry is default */
     { "[M]",      monocle },
-    { "[@]",      spiral },
-    { "[\\]",     dwindle },
-    { "H[]",      deck },
-    { "TTT",      bstack },
-    { "===",      bstackhoriz },
-    { "HHH",      grid },
-    { "###",      nrowgrid },
-    { "---",      horizgrid },
-    { ":::",      gaplessgrid },
-    { "|M|",      centeredmaster },
-    { ">M>",      centeredfloatingmaster },
-    { "|+|",      tatami },
     { "><>",      NULL },    /* no layout function means floating behavior */
 };
 
@@ -124,7 +112,7 @@ static Key keys[] = {
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
     { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-    { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+    { MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
@@ -161,24 +149,17 @@ static Key keys[] = {
 
     { MODKEY,                       XK_q,      killclient,     {0} },
     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-    { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
+    { MODKEY,						XK_f,      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-    { MODKEY|ControlMask,           XK_g,      setlayout,      {.v = &layouts[10]} },
-    { MODKEY|ControlMask|ShiftMask, XK_t,      setlayout,      {.v = &layouts[13]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
-    { MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
-    { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
     { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-    { MODKEY,                       XK_f,      togglefullscr,  {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+
     { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_minus, 		setborderpx,    {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_p, 	        setborderpx,    {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_w, 	        setborderpx,    {.i = default_border } },
 
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
