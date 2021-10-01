@@ -100,6 +100,10 @@ enum {
   SchemeTag3,
   SchemeTag4,
   SchemeTag5,
+  SchemeTag6,
+  SchemeTag7,
+  SchemeTag8,
+  SchemeTag9,
   SchemeLayout,
   TabSel,
   TabNorm,
@@ -259,7 +263,6 @@ static void hide(Client *c);
 static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
-static void layoutmenu(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
@@ -1869,22 +1872,6 @@ void killclient(const Arg *arg) {
   }
 }
 
-void layoutmenu(const Arg *arg) {
-  FILE *p;
-  char c[3], *s;
-  int i;
-
-  if (!(p = popen(layoutmenu_cmd, "r")))
-    return;
-  s = fgets(c, sizeof(c), p);
-  pclose(p);
-
-  if (!s || *s == '\0' || c == '\0')
-    return;
-
-  i = atoi(c);
-  setlayout(&((Arg){.v = &layouts[i]}));
-}
 
 void manage(Window w, XWindowAttributes *wa) {
   Client *c, *t = NULL;

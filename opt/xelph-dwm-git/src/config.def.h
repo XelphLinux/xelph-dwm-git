@@ -1,10 +1,7 @@
-/* See LICENSE file for copyright and license details. */
-
-#define XF86MonBrightnessDown 0x1008ff03
-#define XF86MonBrightnessUp 0x1008ff02
-
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+#include "themes/nord.h"
+
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int default_border = 0;  // to switch back to default border after dynamic border resizing via keybinds
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -19,24 +16,19 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always };
 static const int showtab            = showtab_auto;
-static const int toptab             = True;
+static const int toptab             = False;	/*No tab on monocle mode*/
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;
-static const int vertpadbar         = 11;
+static const int vertpadbar         = 8;
 static const int vertpadtab         = 33;
 static const int horizpadtabi       = 15;
 static const int horizpadtabo       = 15;
 static const int scalepreview       = 4;
 static       int tag_preview        = 0;        /* 1 means enable, 0 is off */
 
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=10",
-                                        "Material Design Icons-Regular:size=10",
-                                      };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=10","Material Design Icons-Regular:size=10",}; 
 static const int colorfultag        = 1;  /* 0 means use SchemeSel for selected non vacant tag */
 
-// theme
-#include "themes/onedark.h"
 
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
@@ -50,6 +42,10 @@ static const char *colors[][3]      = {
     [SchemeTag3]       = { orange, black,black },
     [SchemeTag4]       = { green, black, black },
     [SchemeTag5]       = { pink,  black, black },
+    [SchemeTag6]       = { blue,  black, black },
+    [SchemeTag7]       = { red,   black, black },
+    [SchemeTag8]       = { orange, black,black },
+    [SchemeTag9]       = { green, black, black },
     [SchemeLayout]     = { green, black, black }, 
     [SchemeBtnPrev]    = { green, black, black }, 
     [SchemeBtnNext]    = { yellow, black, black }, 
@@ -57,11 +53,10 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = {" ", " ", " ", " ", " "};
+//static char *tags[] = {" ", " ", " ", " ", " "};
+static char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
-                                  SchemeTag4, SchemeTag5
-                                };
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, SchemeTag6, SchemeTag8, SchemeTag9};
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
@@ -76,14 +71,14 @@ static const Rule rules[] = {
        	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
-      	{ "eww",      NULL,       NULL,       0,            0,           1,           -1 },
+    { "eww",      NULL,       NULL,       0,            0,           1,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "functions.h"
@@ -121,24 +116,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = {  "st", NULL }; // change this to your term
-static const char *rofi[] = {"rofi", "-show", "drun", NULL };
-static const char *layoutmenu_cmd = "/home/sid/.dwm/layoutmenu.sh";
-static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
-static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    { MODKEY,                       XK_c,      spawn,          {.v = rofi } },
-
-    // if you dont use st and this script my rm this and uncomment line below it!
-    //{ MODKEY,                       XK_Return, spawn,   SHCMD("~/.local/bin/./st_settings && st")}, 
-    { MODKEY,                       XK_Return, spawn,    {.v = termcmd }},  
-
-    {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY, XK_u, spawn,   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
-    {0, XF86MonBrightnessDown, spawn, {.v = xd}},
-    {0, XF86MonBrightnessUp, spawn, {.v = xi}},
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY|ControlMask,                       XK_w,      tabmode,        { -1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -224,9 +204,7 @@ static Button buttons[] = {
     /* click                event mask      button          function        argument */
     { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
     { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-    { ClkLtSymbol,          0,              Button3,        layoutmenu,     {0} },
     { ClkWinTitle,          0,              Button2,        zoom,           {0} },
-    { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 
 		/* Keep movemouse? */
     /* { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} }, */
@@ -241,7 +219,7 @@ static Button buttons[] = {
 		 * to control these separately (i.e. to retain the feature to move a tiled window
 		 * into a floating position).
 		 */
-		{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
+	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 0} },
     { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
     { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
     { ClkClientWin,         ControlMask,    Button1,        dragmfact,      {0} },

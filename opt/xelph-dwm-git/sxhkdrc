@@ -1,0 +1,123 @@
+# Opens the NeoVim text editor
+super + e
+    alacritty -e nvim
+
+# Take a screenshot of your entire screen
+super + Print 
+	maim | tee ~/Pictures/screenshots/$(date | sed 's/\s/-/g').png | xclip -selection clipboard -t image/png ; notify-send 'Screenshot has been saved and copied to your clipboard' -a 'Screenshot script' -u critical -t 2000
+
+# Disable the touchpad
+super + Delete
+	/opt/xelph-dwm-git/scripts/toggletouchpad.sh
+
+# Toggle pause state of MOCP (music on console)
+super + c
+	mocp -G
+
+# Opens dmenu prompt
+super + d
+	dmenu_run -h 35 -i
+
+# Alacritty (terminal)
+super + Return
+    alacritty --working-directory /home/$USER
+
+# Opens brave browser
+super + w
+    brave
+
+# Quickly clear your clipboard
+super + BackSpace
+	printf '' | xclip -selection clipboard
+
+# MOCP (Music player)
+super + m
+	alacritty -e mocp
+
+# Gotop process viewer
+super + g
+	alacritty -e gotop
+
+# btop++ process viewer
+super + B
+	alacritty -e btop
+
+# Quickly record your screen with ffmpeg
+super + r
+	/opt/xelph-dwm-git/scripts/record-screen.sh
+# to record from the webcam set your input file to /dev/video<filenumber>
+
+# Pulsemixer - Terminal audio manager
+super + v
+    alacritty -e pulsemixer
+
+# Set wallpaper with feh and sxiv
+super + shift + w
+	/opt/xelph-dwm-git/scripts/setwallpaper.sh
+
+# XKill - kills any x window
+super + shift + Escape
+    xkill
+
+# FreeTube - YouTube but better
+super + shift + f
+	pcmanfm
+
+# Discord Canary
+super + shift + d
+	discord-canary
+	
+# Reload your sxhkd keybinds
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+# Quickly edit your configs
+super + shift + c
+	/opt/xelph-dwm-git/scripts/configselector
+
+# Get a quick manual of all the installed programs in your machine
+ctrl + m
+	bash /opt/xelph-dwm-git/scripts/mansplain
+
+# Screenshot a particular area of your screen
+Print
+	maim -s | tee ~/Pictures/screenshots/$(date | sed 's/\s/-/g').png | xclip -selection clipboard -t image/png;notify-send 'Screenshot has been saved and copied to your clipboard' -a 'Screenshot script' -u critical -t 2000
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioStop
+	playerctl stop
+
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+
+XF86AudioLowerVolume
+	amixer set Master 5%-
+
+XF86AudioMute
+	amixer -D pulse set Master 1+ toggle
+
+XF86MonBrightnessUp
+    brightnessctl set 5%+
+
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+# Toggle compositor (picom-jonaburg-git)
+ctrl + alt + o
+    /opt/xelph-dwm-git/scripts/picom-toggle.sh
+
+# Lock your computer
+super + ctrl + l
+	betterlockscreen -l blur
+
+# Pixel color picker
+alt + c
+	/opt/xelph-dwm-git/scripts/pixelcolor
