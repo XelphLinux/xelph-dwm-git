@@ -1,1 +1,7 @@
 deps
+dwm
+drw.o
+dwm.o
+util.o
+dwm-.*.tar.gz
+config.h
