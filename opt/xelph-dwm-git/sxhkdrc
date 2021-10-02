@@ -16,7 +16,7 @@ super + d
 
 # Alacritty (terminal)
 super + Return
-    alacritty --working-directory /home/$USER
+    st
 
 # Opens brave browser
 super + w
@@ -28,15 +28,15 @@ super + BackSpace
 
 # MOCP (Music player)
 super + m
-	alacritty -e mocp
+	st -e mocp
 
 # Gotop process viewer
 super + g
-	alacritty -e gotop
+	st -e gotop
 
 # btop++ process viewer
 super + B
-	alacritty -e btop
+	st -e btop
 
 # Quickly record your screen with ffmpeg
 super + r
@@ -45,7 +45,7 @@ super + r
 
 # Pulsemixer - Terminal audio manager
 super + v
-    alacritty -e pulsemixer
+    st -e pulsemixer
 
 # Set wallpaper with feh and sxiv
 super + shift + w
