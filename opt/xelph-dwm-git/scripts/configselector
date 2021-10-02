@@ -1,17 +1,14 @@
 #!/bin/bash
 
-TEXTEDIT="alacritty -e nvim"
+TEXTEDIT="st -e nvim"
 declare -a options=(
-"Alacritty - $HOME/.config/alacritty/alacritty.yml"
-"AutoStart Script - $HOME/.config/bspwm/autostart.sh"
-"Bspwm - $HOME/.config/bspwm/bspwmrc"
-"Bspwm scripts - $HOME/.config/bspwm/scripts/"
-"Config selector - $HOME/.config/bspwm/scripts/configselector"
+"AutoStart Script - /opt/xelph-dwm-git/scripts/autostart.sh"
+"DWM scripts - /opt/xelph-dwm-git/scripts/"
+"Config selector - /opt/xelph-dwm-git/scripts/configselector"
 "NeoVim Config - $HOME/.config/nvim/init.vim"
 "NeoVim Snippets - $HOME/.config/nvim/UltiSnips"
-"Picom config - $HOME/.config/bspwm/picom.conf"
-"Polybar config - $HOME/.config/bspwm/polybar/config"
-"Sxhkd keybinds - $HOME/.config/bspwm/sxhkd/sxhkdrc"
+"Picom config - /opt/xelph-dwm-git/picom.conf"
+"SXHKD keybinds - /opt/xelph-dwm-git/sxhkdrc"
 "Xinitrc - $HOME/.xinitrc"
 "Zsh aliases - $HOME/.zshrc-personal"
 "Zshrc - $HOME/.zshrc"
