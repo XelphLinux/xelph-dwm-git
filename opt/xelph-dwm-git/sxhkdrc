@@ -1,7 +1,3 @@
-# Opens the NeoVim text editor
-super + e
-    alacritty -e $EDITOR
-
 # Take a screenshot of your entire screen
 super + Print 
 	maim | tee ~/Pictures/screenshots/$(date | sed 's/\s/-/g').png | xclip -selection clipboard -t image/png ; notify-send 'Screenshot has been saved and copied to your clipboard' -a 'Screenshot script' -u critical -t 2000

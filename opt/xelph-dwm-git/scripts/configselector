@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-TEXTEDIT="alacritty -e $EDITOR"
+TEXTEDIT="alacritty -e nvim"
 declare -a options=(
 "Alacritty - $HOME/.config/alacritty/alacritty.yml"
 "AutoStart Script - $HOME/.config/bspwm/autostart.sh"
