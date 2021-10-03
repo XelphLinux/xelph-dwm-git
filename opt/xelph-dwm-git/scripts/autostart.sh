@@ -28,8 +28,8 @@ killall polkit-gnome-au
 killall dunst
 exec dunst &
 xset r rate 350 60 &
-ps aux | grep bar.sh | awk '{print $2}' | xargs -n 1 kill -9
-/opt/xelph-dwm-git/scripts/bar.sh &
+killall dwmblocks
+dwmblocks &
 killall sxhkd
 sxhkd -c /opt/xelph-dwm-git/sxhkdrc &
 killall betterlockscreen
