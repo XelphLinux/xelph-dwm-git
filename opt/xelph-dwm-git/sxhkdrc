@@ -10,6 +10,10 @@ super + Delete
 super + c
 	mocp -G
 
+# Logout Tool
+super + x
+	bash ~/.bin/logout-tool
+
 # Opens dmenu prompt
 super + d
 	dmenu_run -h 35 -i
