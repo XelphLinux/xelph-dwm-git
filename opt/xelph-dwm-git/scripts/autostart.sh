@@ -14,6 +14,8 @@ wmname LG3D &
 #xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 killall mocicon
 mocicon &
+killall volumeicon
+volumeicon &
 nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 nm-applet &
