@@ -2500,7 +2500,7 @@ void run(void) {
 }
 
 void runAutostart(void){
-	system("cd /opt/xelph-dwm-git/scripts/; ./autostart.sh");
+	system("bash /opt/xelph-dwm-git/scripts/autostart.sh;cd /home/$USER");
 }
 
 void scan(void) {
