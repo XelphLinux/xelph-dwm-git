@@ -37,4 +37,3 @@ killall sxhkd
 sxhkd -c /opt/xelph-dwm-git/sxhkdrc &
 killall betterlockscreen
 betterlockscreen -u $(cat ~/.config/nitrogen/bg-saved.cfg | grep file | sed 's/file=//g') &
-dwm
