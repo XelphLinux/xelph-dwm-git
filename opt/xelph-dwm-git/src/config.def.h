@@ -23,7 +23,7 @@ static const int vertpadbar         = 8;
 static const int vertpadtab         = 33;
 static const int horizpadtabi       = 15;
 static const int horizpadtabo       = 15;
-static const int scalepreview       = 4;
+static const int scalepreview       = 3;
 static       int tag_preview        = 1;        /* 1 means enable, 0 is off */
 
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=10","Material Design Icons-Regular:size=10",}; 
@@ -53,8 +53,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-//static char *tags[] = {" ", " ", " ", " ", " "};
-static char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+static char *tags[] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+//static char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, SchemeTag6, SchemeTag8, SchemeTag9};
 
